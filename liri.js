@@ -100,3 +100,31 @@ var doWhatItSays = function() {
       }
     });
   };
+
+
+  //Sort out which function is called for which command 
+
+  var whichFunctionCalled = function(caseData, functionData) {
+    switch (caseData) {
+    /*case "concert-this":
+        SearchBandsintown(functionData);
+      break;*/
+    case "spotify-this-song":
+      searchSpotify(functionData);
+      break;
+    case "movie-this":
+      SearchOMDB(functionData);
+      break;
+    case "do-what-it-says":
+      doWhatItSays();
+      break;
+    default:
+      console.log("Not an acceptable command");
+    }
+  };
+
+  var Search = function(arg1, arg2) {
+    whichFunctionCalled(arg1, arg2);
+  };
+
+  Search(process.argv[2], process.argv.slice(3).join(" "));
