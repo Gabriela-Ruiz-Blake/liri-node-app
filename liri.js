@@ -45,7 +45,7 @@ var searchSpotify = function(song) {
   spotify.search(
     {
       type: "track",
-      query: songName
+      query: song
     },
     function(error, data) {
       if (error) {
@@ -57,7 +57,6 @@ var searchSpotify = function(song) {
 
       for (var i = 0; i < songs.length; i++) {
         console.log(i);
-        console.log("artist(s): " + songs[i].artists.map(getArtistNames));
         console.log("song name: " + songs[i].name);
         console.log("preview song: " + songs[i].preview_url);
         console.log("album: " + songs[i].album.name);
@@ -88,15 +87,16 @@ var SearchOMDB = function(movie) {
 };
 
 var doWhatItSays = function() {
-    fs.readFile("random.txt", function(error, data) {
+    fs.readFile("random.txt", "utf8", function(err, data) {
       console.log(data);
   
-      var array = data.split(",");
+      var stg = "hello how are you"
+      var DataArray = data.split(",");
   
-      if (array.length === 2) {
-        pick(array[0], array[1]);
-      } else if (array.length === 1) {
-        pick(array[0]);
+      if (DataArray.length === 2) {
+        whichFunctionCalled(DataArray[0], DataArray[1]);
+      } else if (DataArray.length === 1) {
+        whichFunctionCalled(DataArray[0]);
       }
     });
   };
